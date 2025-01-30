@@ -42,10 +42,11 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   });
   
   it('teste para validar que, se um valor não-numérico for digitado, seu valor continuará vazio.', () => {
-    cy.get('#phone').type('123')
-    
-    //Assert: invoke pega o valor do campo, e should confirma que so tem numero inteiros com "/^\d+$/"
-    cy.get('#phone').invoke('val').should('match', /^\d+$/)
+    cy.get('#phone')
+    .type('123')
+    //Assert: invoke pega o valor do campo, e should confirma que so tem numero inteiro com "/^\d+$/"
+    .invoke('val')
+    .should('match', /^\d+$/)
   });
 
   it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () => {
@@ -81,9 +82,28 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.fillMandatoryFieldsAndSubmit('test', 'test', 'test@mail.com', 'test')
   });
 
-  it.only('Exercício extra 8', () => {
+  it('Exercício extra 8', () => {
     cy.fillMandatoryFieldsAndSubmit('test', 'test', 'test@mail.com', 'test',)
     //cy.contains('button', 'Enviar').click() Esse comando ja existe no commands.js
     cy.contains('.success', 'Mensagem enviada com sucesso.')
+  });
+
+  // AULA 3
+  it('Ex - Seleciona um produto (YouTube) por seu texto', () => {
+    cy.get('#product').select('Cursos')
+
+    cy.get('#product').should('have.value', 'cursos')
+  });
+
+  it('Ex1 - seleciona um produto (Mentoria) por seu valor (value)', () => {
+    cy.get('#product').select('mentoria')
+    
+    cy.get('#product').should('have.value', 'mentoria')
+  });
+
+  it.only('Ex2 - seleciona um produto (Blog) por seu índice', () => {
+    cy.get('#product')
+    .select(4)
+    .should('have.value', 'youtube')
   });
 });
