@@ -101,9 +101,24 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('#product').should('have.value', 'mentoria')
   });
 
-  it.only('Ex2 - seleciona um produto (Blog) por seu índice', () => {
+  it('Ex2 - seleciona um produto (Blog) por seu índice', () => {
     cy.get('#product')
     .select(4)
     .should('have.value', 'youtube')
+  });
+  
+  // Aula 4
+  it('Ex - marca o tipo de atendimento "Feedback"', () => {
+    cy.get('input[type="radio"][value="feedback"]')
+    .check()
+    .should('be.checked')
+  });
+
+  it.only('Ex1 - marca cada tipo de atendimento', () => {
+    cy.get('input[type="radio"]').each(($radio) => {
+      cy.wrap($radio)
+      .check()
+      .should('be.checked')
+    })
   });
 });
