@@ -4,9 +4,11 @@
   "description": "Curso 'Cypress, do Zero à Nuvem' da Escola Talking About Testing.",
   "main": "src/index.html",
   "scripts": {
-  "cyopen": "cypress open",
-  "test": "cypress run"
-},
+    "cyopen": "cypress open",
+    "test": "cypress run",
+    "Viewport": "cypress open --config viewportWidth=370 viewportHeight=660.",
+    "test:mobile": "cypress run --config viewportWidth=410 viewportHeight=860."
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wlsf82/cypress-do-zero-a-nuvem.git"
@@ -23,7 +25,7 @@
   "author": "Walmyr <wlsf82@gmail.com> (https://walmyr.dev/)",
   "license": "MIT",
   "homepage": "https://github.com/wlsf82/cypress-do-zero-a-nuvem#readme",
-  "dependencies": {
-    "cypress": "^14.0.0"
+  "devDependencies": {
+    "cypress": "^14.0.2"
   }
 }
