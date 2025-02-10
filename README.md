@@ -1,1 +1,1 @@
-# Meu primeiro curso sobre automação :)
+# Meu primeiro curso sobre automação! :)
