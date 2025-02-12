@@ -131,7 +131,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     .should('not.be.checked')
   });
 
-  it.only('seleciona um arquivo da pasta fixtures', () => {
+  it('seleciona um arquivo da pasta fixtures', () => {
     cy.get('#file-upload')
     .selectFile('cypress/fixtures/example.json')
     .should('have.prop', 'files')
