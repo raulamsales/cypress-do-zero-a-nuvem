@@ -34,7 +34,7 @@ document.querySelector('button[type="submit"]')
       return showAndHideErrorMessage()
     }
     if (!emailField.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
-      return showAndHideErrorMessage()
+      //return showAndHideErrorMessage()
     }
     firstNameField.value = ''
     lastNameField.value = ''
@@ -43,7 +43,7 @@ document.querySelector('button[type="submit"]')
     phoneField.value = ''
     productField.selectedIndex = 0
     helpRadio.checked = true
-    //BREAKING TEST emailCheckbox.checked = false
+    emailCheckbox.checked = false
     phoneCheckbox.checked = false
     fileField.value = ''
     phoneLabelSpan.style.display = 'none'
