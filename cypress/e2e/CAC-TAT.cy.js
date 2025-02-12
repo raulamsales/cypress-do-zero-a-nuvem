@@ -165,7 +165,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('a[href="privacy.html"]').should('have.attr', 'target', '_blank')
   });
 
-  it.only('testa a página da política de privacidade de forma independente', () => {
+  it('testa a página da política de privacidade de forma independente', () => {
     cy.get('a[href="privacy.html"]')
     .invoke('removeAttr', 'target')
     .should('not.have.attr', 'target')
@@ -176,7 +176,4 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     .should('contain', 'CAC TAT - Política de Privacidade')
   });
 
-  it('', () => {
-    
-  });
 });
