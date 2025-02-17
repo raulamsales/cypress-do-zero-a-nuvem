@@ -176,4 +176,50 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     .should('contain', 'CAC TAT - Política de Privacidade')
   });
 
+  it('Seção 13: Avançando no uso do Cypress', () => {
+    cy.clock()
+    cy.get('button[type="submit"]').click()
+    cy.get('.error').should('contain', 'Valide os campos obrigatórios!')
+    cy.tick(3000)
+    cy.get('.error').should('not.be.visible')
+  });
+
+
+  Cypress._.times(3, () =>{
+    it('lodash (Cypress._)', () => {
+      cy.get('#firstName').type('teste').should('have.value', 'teste')
+    });
+  });
+
+  it('Invoque atributos e métodos de elementos com o comando .invoke()', () => {
+    cy.clock()
+    cy.get('button[type="submit"]').click()
+    cy.get('.error').should('contain', 'Valide os campos obrigatórios!')
+    cy.tick(3000)
+    cy.get('.error').should('not.be.visible')
+    cy.get('.error').invoke('show').should('be.visible')
+  });
+
+  it('preenche o campo da área de texto usando o comando invoke', () => {
+    cy.get('#firstName').invoke('val', 'teste').should('have.value', 'teste')
+  });
+
+  it('faz uma requisição HTTP', () => {
+    cy.request('https://cac-tat-v3.s3.eu-central-1.amazonaws.com/index.html')
+    .as('request')
+    .its('status')
+    .should('be.equal', 200)
+
+    cy.get('@request')
+    .its('statusText')
+    .should('contain', 'OK')
+
+    cy.get('@request')
+    .its('body')
+    .should('include', 'CAC TAT')
+  });
+
+  it.only('Catfinder', () => {
+    cy.get('#cat').invoke('show').should('be.visible')
+  });
 });
